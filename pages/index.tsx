@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Sidebar from '../components/Sidebar/Sidebar';
 
-export default function Home() {
+const Home = () => {
     return (
         <div className='bg-black h-screen overflow-hidden'>
             <Head>
@@ -17,4 +17,6 @@ export default function Home() {
             <div>{/* Player */}</div>
         </div>
     );
-}
+};
+
+export default Home;

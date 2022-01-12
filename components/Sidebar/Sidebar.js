@@ -7,7 +7,7 @@ import {
     RssIcon,
 } from '@heroicons/react/outline';
 
-export default function Sidebar() {
+const Sidebar = () => {
     return (
         <div className='text-gray-500 p-5 text-sm border-gray-900'>
             <div className='space-y-4'>
@@ -47,4 +47,6 @@ export default function Sidebar() {
             </div>
         </div>
     );
-}
+};
+
+export default Sidebar;
