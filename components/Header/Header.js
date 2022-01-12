@@ -3,8 +3,8 @@ import { ChevronDownIcon } from '@heroicons/react/outline';
 //     ArrowCircleLeftIcon,
 //     ArrowCircleRightIcon,
 // } from '@heroicons/react/solid';
-import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
 import { shuffle } from 'lodash';
 
 const colors = [
