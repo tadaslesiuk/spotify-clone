@@ -14,7 +14,7 @@ const Home = () => {
 
             <main className="flex">
                 <Sidebar />
-                <div className="grow">
+                <div className="grow h-screen overflow-y-scroll no-scrollbar">
                     <Header />
                     <Main />
                 </div>
