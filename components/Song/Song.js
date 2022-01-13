@@ -1,12 +1,29 @@
 import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
+import {
+    currentTrackIdState,
+    trackIsPlayingState,
+} from '../../store/trackAtom';
 import useSpotify from '../../hooks/useSpotify';
 import { msToMinAndSec } from '../../lib/msToMinAndSec';
-import { PlayIcon } from '@heroicons/react/solid';
+import { PlayIcon, PauseIcon } from '@heroicons/react/solid';
 
 const Song = ({ order, track }) => {
     const spotifyApi = useSpotify();
+    const [currentTrackId, setCurrentTrackId] =
+        useRecoilState(currentTrackIdState);
+    const [trackIsPlaying, setTrackIsPlaying] =
+        useRecoilState(trackIsPlayingState);
     const [artists, setArtists] = useState('');
     const [hovered, setHovered] = useState(false);
+
+    const playHandler = () => {
+        setCurrentTrackId(track.track.id);
+        setTrackIsPlaying(true);
+        spotifyApi.play({
+            uris: [track.track.uri],
+        });
+    };
 
     useEffect(() => {
         const artistCount = track.track.artists.length;
@@ -23,10 +40,17 @@ const Song = ({ order, track }) => {
             className="grid grid-cols-2 px-4 text-white text-opacity-60 hover:bg-[#212121] rounded"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
+            onDoubleClick={playHandler}
         >
             <div className="flex items-center space-x-4">
                 {!hovered ? (
-                    <p className="w-6 text-right pr-2">{order + 1}</p>
+                    trackIsPlaying && currentTrackId === track.track.id ? (
+                        <PlayIcon className="w-6 h-6 text-[#1ED760] animate-pulse" />
+                    ) : (
+                        <p className="w-6 text-right pr-2">{order + 1}</p>
+                    )
+                ) : trackIsPlaying && currentTrackId === track.track.id ? (
+                    <PauseIcon className="w-6 h-6" />
                 ) : (
                     <PlayIcon className="w-6 h-6" />
                 )}
@@ -36,7 +60,13 @@ const Song = ({ order, track }) => {
                     alt=""
                 />
                 <div>
-                    <p className="w-36 lg:w-64 truncate text-white">
+                    <p
+                        className={`w-36 lg:w-64 truncate ${
+                            trackIsPlaying && currentTrackId === track.track.id
+                                ? 'text-[#1ED760]'
+                                : 'text-white'
+                        }`}
+                    >
                         {track.track.name}
                     </p>
                     <p
