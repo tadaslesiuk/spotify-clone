@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
-import { signOut, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { useRecoilState } from 'recoil';
 import { playlistIdState } from '../../store/playlistAtom';
 import useSpotify from '../../hooks/useSpotify';
 import {
     DotsHorizontalIcon,
-    LogoutIcon,
     HomeIcon,
     SearchIcon,
     MenuAlt2Icon,
@@ -33,13 +32,6 @@ const Sidebar = () => {
     return (
         <div className="text-gray-500 p-5 text-sm border-r border-gray-900 overflow-y-scroll no-scrollbar h-screen hidden sm:max-w-[12rem] md:inline-flex lg:max-w-[15rem]">
             <div className="space-y-3">
-                <button
-                    className="flex items-center space-x-2 hover:text-white"
-                    onClick={() => signOut()}
-                >
-                    <LogoutIcon className="h-6 w-6" />
-                    <p>Log out</p>
-                </button>
                 <button className="hover:text-white">
                     <DotsHorizontalIcon className="h-6 w-6" />
                 </button>
