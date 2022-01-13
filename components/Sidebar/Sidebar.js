@@ -10,27 +10,29 @@ import {
     MenuAlt2Icon,
     PlusCircleIcon,
     HeartIcon,
-    // RssIcon,
 } from '@heroicons/react/outline';
 
 const Sidebar = () => {
     const spotifyApi = useSpotify();
     const { data: session, status } = useSession();
     const [playlists, setPlaylists] = useState([]);
+    const [selectedPlaylist, setSelectedPlaylist] = useState();
     const [playlistId, setPlaylistId] = useRecoilState(playlistIdState);
 
     useEffect(() => {
         if (spotifyApi.getAccessToken()) {
-            spotifyApi.getUserPlaylists().then((data) => {
+            spotifyApi.getUserPlaylists({ limit: 30 }).then((data) => {
                 setPlaylists(data.body.items);
             });
         }
     }, [session, spotifyApi]);
 
-    console.log('Playlist ID: ', playlistId);
+    useEffect(() => {
+        setSelectedPlaylist(playlists.find((p) => p.id === playlistId));
+    }, [playlists, playlistId]);
 
     return (
-        <div className="text-gray-500 p-5 text-sm border-r border-gray-900 overflow-y-scroll no-scrollbar h-screen hidden sm:max-w-[12rem] md:inline-flex lg:max-w-[15rem]">
+        <div className="text-[#B3B3B3] p-5 text-sm border-r border-gray-900 overflow-y-scroll no-scrollbar h-screen hidden sm:max-w-[12rem] md:inline-flex lg:max-w-[15rem]">
             <div className="space-y-3">
                 <button className="hover:text-white">
                     <DotsHorizontalIcon className="h-6 w-6" />
@@ -56,16 +58,15 @@ const Sidebar = () => {
                     <HeartIcon className="h-6 w-6" />
                     <p>Liked Songs</p>
                 </button>
-                {/* <button className="flex items-center space-x-2 hover:text-white">
-                    <RssIcon className="h-6 w-6" />
-                    <p>Your Episodes</p>
-                </button> */}
                 <hr className="border-t-1 border-gray-900" />
                 {playlists &&
                     playlists.map((p) => (
                         <p
                             key={p.id}
-                            className="cursor-pointer hover:text-white"
+                            className={`cursor-pointer hover:text-white ${
+                                p.id === selectedPlaylist?.id &&
+                                'text-white font-bold'
+                            }`}
                             onClick={() => setPlaylistId(p.id)}
                         >
                             {p.name}
