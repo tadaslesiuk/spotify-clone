@@ -94,19 +94,23 @@ const Player = () => {
         if (trackInfo) {
             const artistCount = trackInfo.artists.length;
 
-            if (artistCount === artists.split(', ').length) return;
+            if (artistCount === 1) {
+                setArtists(trackInfo.artists[0].name);
+            } else {
+                if (artists.split(', ').length === artistCount) return;
 
-            Object.values(trackInfo.artists).forEach((a, index) => {
-                index !== artistCount - 1
-                    ? setArtists((state) => state + `${a.name}, `)
-                    : setArtists((state) => state + `${a.name}`);
-            });
+                Object.values(trackInfo.artists).forEach((a, index) => {
+                    index !== artistCount - 1
+                        ? setArtists((state) => state + `${a.name}, `)
+                        : setArtists((state) => state + `${a.name}`);
+                });
+            }
         }
     }, [trackInfo]);
 
     return (
-        <div className="fixed grid grid-cols-3 w-full h-[90px] bottom-0 px-4 bg-[#181818] border-t border-white/10">
-            <div className="flex justify-start items-center space-x-4">
+        <div className="fixed grid md:grid-cols-3 w-full h-[90px] bottom-0 px-4 bg-[#181818] border-t border-white/10">
+            <div className="flex justify-start items-center space-x-4 hidden md:inline-flex">
                 <img
                     className="w-14 h-14"
                     src={trackInfo?.album?.images?.[0]?.url}
@@ -119,7 +123,7 @@ const Player = () => {
                     </p>
                 </div>
             </div>
-            <div className="flex justify-center items-center space-x-4 text-white text-opacity-60">
+            <div className="flex justify-center items-center space-x-6 text-white text-opacity-60">
                 <SwitchHorizontalIcon className="w-4 h-4 hover:text-white" />
                 <RewindIcon className="w-4 h-4 hover:text-white" />
                 {trackIsPlaying ? (
@@ -136,7 +140,7 @@ const Player = () => {
                 <FastForwardIcon className="w-4 h-4 hover:text-white" />
                 <RefreshIcon className="w-4 h-4 hover:text-white" />
             </div>
-            <div className="flex justify-end items-center space-x-2 text-white text-opacity-60">
+            <div className="flex justify-end hidden md:inline-flex items-center space-x-2 text-white text-opacity-60">
                 {volume === 0 ? (
                     <VolumeOffIcon
                         className="w-4 h-4 hover:text-white"

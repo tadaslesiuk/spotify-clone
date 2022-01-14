@@ -65,16 +65,22 @@ const PlaylistDetails = () => {
             className={`flex items-end h-80 space-x-7 text-white p-8 bg-gradient-to-b ${color} to-black`}
         >
             <img
-                className="w-56 h-56 shadow-2xl hover:opacity-80"
+                className="w-40 h-40 xl:w-56 xl:h-56 shadow-2xl hover:opacity-80"
                 src={playlist?.images?.[0]?.url}
                 alt=""
             />
             <div>
                 <p className="text-xs font-bold">PLAYLIST</p>
-                <h1 className="text-8xl font-bold mt-2 mb-6 cursor-pointer">
+                <h1
+                    className={` ${
+                        playlist?.name.length < 15
+                            ? 'xl:text-8xl'
+                            : 'text-xl lg:text-4xl'
+                    } font-bold mt-2 mb-6 cursor-pointer`}
+                >
                     {playlist?.name}
                 </h1>
-                <p className="text-sm text-white text-opacity-60 mb-2 cursor-pointer">
+                <p className="hidden md:inline-flex text-sm text-white text-opacity-60 mb-2 cursor-pointer">
                     {playlist?.description}
                 </p>
                 <div className="flex items-center w-max rounded-full text-white text-opacity-60 text-sm space-x-2">

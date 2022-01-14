@@ -28,18 +28,22 @@ const Song = ({ order, track }) => {
     useEffect(() => {
         const artistCount = track.track.artists.length;
 
-        if (artistCount === artists.split(', ').length) return;
+        if (artistCount === 1) {
+            setArtists(track.track.artists[0].name);
+        } else {
+            if (artists.split(', ').length === artistCount) return;
 
-        Object.values(track.track.artists).forEach((a, index) => {
-            index !== artistCount - 1
-                ? setArtists((state) => state + `${a.name}, `)
-                : setArtists((state) => state + `${a.name}`);
-        });
+            Object.values(track.track.artists).forEach((a, index) => {
+                index !== artistCount - 1
+                    ? setArtists((state) => state + `${a.name}, `)
+                    : setArtists((state) => state + `${a.name}`);
+            });
+        }
     }, []);
 
     return (
         <div
-            className="grid grid-cols-2 px-4 text-white text-opacity-60 hover:bg-[#212121] rounded"
+            className="grid grid-cols-2 px-4 py-2 text-white text-opacity-60 hover:bg-[#212121] rounded cursor-default"
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
             onDoubleClick={playHandler}
