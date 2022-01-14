@@ -22,7 +22,7 @@ const Sidebar = () => {
     useEffect(() => {
         if (spotifyApi.getAccessToken()) {
             spotifyApi.getUserPlaylists({ limit: 30 }).then((data) => {
-                setPlaylists(data.body.items);
+                setPlaylists(data?.body.items);
             });
         }
     }, [session, spotifyApi]);
@@ -59,19 +59,21 @@ const Sidebar = () => {
                     <p>Liked Songs</p>
                 </button>
                 <hr className="border-t-1 border-gray-900" />
-                {playlists &&
-                    playlists.map((p) => (
-                        <p
-                            key={p.id}
-                            className={`cursor-pointer hover:text-white ${
-                                p.id === selectedPlaylist?.id &&
-                                'text-white font-bold'
-                            }`}
-                            onClick={() => setPlaylistId(p.id)}
-                        >
-                            {p.name}
-                        </p>
-                    ))}
+                <div className="space-y-3">
+                    {playlists &&
+                        playlists.map((p) => (
+                            <p
+                                key={p.id}
+                                className={`cursor-pointer hover:text-white ${
+                                    p.id === selectedPlaylist?.id &&
+                                    'text-white font-bold'
+                                }`}
+                                onClick={() => setPlaylistId(p.id)}
+                            >
+                                {p.name}
+                            </p>
+                        ))}
+                </div>
             </div>
         </div>
     );

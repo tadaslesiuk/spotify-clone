@@ -3,6 +3,7 @@ import { getSession } from 'next-auth/react';
 import Sidebar from '../components/Sidebar/Sidebar';
 import Header from '../components/Header/Header';
 import Main from '../components/Main/Main';
+import Player from '../components/Player/Player';
 
 const Home = () => {
     return (
@@ -11,16 +12,14 @@ const Home = () => {
                 <title>Spotify Clone</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
             <main className="flex">
                 <Sidebar />
-                <div className="grow h-screen overflow-y-scroll no-scrollbar">
+                <div className="grow h-screen overflow-y-scroll">
                     <Header />
                     <Main />
                 </div>
             </main>
-
-            <div>{/* Player */}</div>
+            <Player />
         </div>
     );
 };

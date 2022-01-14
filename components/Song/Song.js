@@ -28,6 +28,8 @@ const Song = ({ order, track }) => {
     useEffect(() => {
         const artistCount = track.track.artists.length;
 
+        if (artistCount === artists.split(', ').length) return;
+
         Object.values(track.track.artists).forEach((a, index) => {
             index !== artistCount - 1
                 ? setArtists((state) => state + `${a.name}, `)

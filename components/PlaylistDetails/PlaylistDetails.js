@@ -39,8 +39,8 @@ const PlaylistDetails = () => {
         spotifyApi
             .getPlaylist(playlistId)
             .then((data) => {
-                setPlaylist(data.body);
-                setPlaylistOwnerId(data.body.owner.id);
+                setPlaylist(data?.body);
+                setPlaylistOwnerId(data?.body?.owner.id);
             })
             .catch((err) => {
                 console.error(err.message);
@@ -51,7 +51,7 @@ const PlaylistDetails = () => {
         spotifyApi
             .getUser(playlistOwnerId)
             .then((data) => {
-                setPlaylistOwner(data.body);
+                setPlaylistOwner(data?.body);
             })
             .catch((err) => {
                 console.error(err.message);
