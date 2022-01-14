@@ -14,7 +14,6 @@ const Song = ({ order, track }) => {
         useRecoilState(currentTrackIdState);
     const [trackIsPlaying, setTrackIsPlaying] =
         useRecoilState(trackIsPlayingState);
-    const [artists, setArtists] = useState('');
     const [hovered, setHovered] = useState(false);
 
     const playHandler = () => {
@@ -24,22 +23,6 @@ const Song = ({ order, track }) => {
             uris: [track.track.uri],
         });
     };
-
-    useEffect(() => {
-        const artistCount = track.track.artists.length;
-
-        if (artistCount === 1) {
-            setArtists(track.track.artists[0].name);
-        } else {
-            if (artists.split(', ').length === artistCount) return;
-
-            Object.values(track.track.artists).forEach((a, index) => {
-                index !== artistCount - 1
-                    ? setArtists((state) => state + `${a.name}, `)
-                    : setArtists((state) => state + `${a.name}`);
-            });
-        }
-    }, []);
 
     return (
         <div
@@ -80,7 +63,7 @@ const Song = ({ order, track }) => {
                             hovered && 'text-white'
                         }`}
                     >
-                        {artists}
+                        {track.track.artists[0].name}
                     </p>
                 </div>
             </div>

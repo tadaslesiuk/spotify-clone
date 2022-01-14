@@ -30,7 +30,6 @@ const Player = () => {
     const [trackIsPlaying, setTrackIsPlaying] =
         useRecoilState(trackIsPlayingState);
     const trackInfo = useTrackInfo();
-    const [artists, setArtists] = useState('');
     const [volume, setVolume] = useState(50);
     const [volumeBeforeMute, setVolumeBeforeMute] = useState();
 
@@ -90,24 +89,6 @@ const Player = () => {
         }
     }, [currentTrackIdState, session, spotifyApi]);
 
-    useEffect(() => {
-        if (trackInfo) {
-            const artistCount = trackInfo.artists.length;
-
-            if (artistCount === 1) {
-                setArtists(trackInfo.artists[0].name);
-            } else {
-                if (artists.split(', ').length === artistCount) return;
-
-                Object.values(trackInfo.artists).forEach((a, index) => {
-                    index !== artistCount - 1
-                        ? setArtists((state) => state + `${a.name}, `)
-                        : setArtists((state) => state + `${a.name}`);
-                });
-            }
-        }
-    }, [trackInfo]);
-
     return (
         <div className="fixed grid md:grid-cols-3 w-full h-[90px] bottom-0 px-4 bg-[#181818] border-t border-white/10">
             <div className="flex justify-start items-center space-x-4 hidden md:inline-flex">
@@ -119,7 +100,7 @@ const Player = () => {
                 <div>
                     <p className="text-sm text-white">{trackInfo?.name}</p>
                     <p className="text-[11px] text-white text-opacity-60">
-                        {artists}
+                        {trackInfo?.artists?.[0]?.name}
                     </p>
                 </div>
             </div>
