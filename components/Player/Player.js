@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRecoilState } from 'recoil';
 import {
@@ -7,6 +7,7 @@ import {
 } from '../../store/trackAtom';
 import useSpotify from '../../hooks/useSpotify';
 import useTrackInfo from '../../hooks/useTrackInfo';
+import { debounce } from 'lodash';
 import {
     RefreshIcon,
     SwitchHorizontalIcon,
@@ -31,6 +32,7 @@ const Player = () => {
     const trackInfo = useTrackInfo();
     const [artists, setArtists] = useState('');
     const [volume, setVolume] = useState(50);
+    const [volumeBeforeMute, setVolumeBeforeMute] = useState();
 
     console.log('TRACK INFO: ', trackInfo);
 
@@ -56,6 +58,30 @@ const Player = () => {
             }
         });
     };
+
+    const muteHandler = () => {
+        setVolumeBeforeMute(volume);
+        setVolume(0);
+    };
+
+    const unmuteHandler = () => {
+        setVolume(volumeBeforeMute);
+    };
+
+    const debounceVolumeChange = useCallback(
+        debounce((volume) => {
+            spotifyApi
+                .setVolume(volume)
+                .catch((err) => console.error(err.message));
+        }, 500),
+        []
+    );
+
+    useEffect(() => {
+        if (volume >= 0 && volume <= 100) {
+            debounceVolumeChange(volume);
+        }
+    }, [volume]);
 
     useEffect(() => {
         if (spotifyApi.getAccessToken() && !currentTrackId) {
@@ -111,14 +137,25 @@ const Player = () => {
                 <RefreshIcon className="w-4 h-4 hover:text-white" />
             </div>
             <div className="flex justify-end items-center space-x-2 text-white text-opacity-60">
-                <VolumeUpIcon className="w-4 h-4 hover:text-white" />
+                {volume === 0 ? (
+                    <VolumeOffIcon
+                        className="w-4 h-4 hover:text-white"
+                        onClick={unmuteHandler}
+                    />
+                ) : (
+                    <VolumeUpIcon
+                        className="w-4 h-4 hover:text-white"
+                        onClick={muteHandler}
+                    />
+                )}
                 <input
                     className="w-[93px] h-[4px]"
                     type="range"
                     value={volume}
                     min={0}
                     max={100}
-                    // onChange={}
+                    onChange={(e) => setVolume(+e.target.value)}
+                    style={{ background: '#A96B00' }}
                 />
                 <ArrowsExpandIcon className="w-4 h-4 hover:text-white" />
             </div>
