@@ -87,7 +87,7 @@ const PlaylistDetails = () => {
                         src={playlistOwner?.images[0].url}
                         alt=""
                     />
-                    <span className="text-white font-bold hover:underline cursor-pointer">
+                    <span className="text-white font-bold hover:underline cursor-not-allowed">
                         {playlistOwner?.display_name}
                     </span>
                     <div className="text-lg">•</div>

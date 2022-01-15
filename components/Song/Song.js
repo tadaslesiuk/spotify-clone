@@ -98,13 +98,13 @@ const Song = ({ order, track, playlistId }) => {
                 <div className="grid grid-cols-3 items-center space-x-2">
                     <div className="flex justify-center">
                         {hovered && (
-                            <HeartIcon className="w-4 h-4 hover:text-white" />
+                            <HeartIcon className="w-4 h-4 hover:text-white cursor-not-allowed" />
                         )}
                     </div>
                     <p>{msToMinAndSec(track?.track?.duration_ms)}</p>
                     <div className="flex justify-end">
                         {hovered && (
-                            <DotsHorizontalIcon className="w-5 h-5 text-white" />
+                            <DotsHorizontalIcon className="w-5 h-5 text-white cursor-not-allowed" />
                         )}
                     </div>
                 </div>

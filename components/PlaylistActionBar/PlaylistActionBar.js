@@ -79,11 +79,11 @@ const PlaylistActionBar = () => {
                         // onClick={playHandler}
                     />
                 )}
-                <DownloadIcon className="w-6 h-6 text-white text-opacity-60 hover:text-white" />
-                <DotsHorizontalIcon className="w-6 h-6 text-white text-opacity-60 hover:text-white" />
+                <DownloadIcon className="w-6 h-6 text-white text-opacity-60 hover:text-white cursor-not-allowed" />
+                <DotsHorizontalIcon className="w-6 h-6 text-white text-opacity-60 hover:text-white cursor-not-allowed" />
             </div>
             <div className="pr-4">
-                <SearchIcon className="w-8 h-8 text-white hover:bg-white/20 rounded-full p-2" />
+                <SearchIcon className="w-8 h-8 text-white hover:bg-white/20 rounded-full p-2 cursor-not-allowed" />
             </div>
         </div>
     );
