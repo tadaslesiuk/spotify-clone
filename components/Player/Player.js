@@ -15,6 +15,7 @@ import {
     VolumeUpIcon,
     VolumeOffIcon,
     ArrowsExpandIcon,
+    HeartIcon,
 } from '@heroicons/react/outline';
 import {
     RewindIcon,
@@ -157,6 +158,9 @@ const Player = () => {
                         {trackInfo?.artists?.[0]?.name}
                     </p>
                 </div>
+                {trackInfo && (
+                    <HeartIcon className="w-5 h-5 text-white text-opacity-60 hover:text-white" />
+                )}
             </div>
             <div className="flex justify-center items-center space-x-6 text-white text-opacity-80">
                 <SwitchHorizontalIcon className="w-4 h-4 hover:text-white cursor-not-allowed" />
