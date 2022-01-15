@@ -33,8 +33,6 @@ const Player = () => {
     const [volume, setVolume] = useState(50);
     const [volumeBeforeMute, setVolumeBeforeMute] = useState();
 
-    console.log('TRACK INFO: ', trackInfo);
-
     const getCurrentTrack = () => {
         if (!trackInfo) {
             spotifyApi.getMyCurrentPlayingTrack().then((data) => {

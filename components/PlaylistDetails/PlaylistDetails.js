@@ -29,22 +29,22 @@ const PlaylistDetails = () => {
     const [playlistOwner, setPlaylistOwner] =
         useRecoilState(playlistOwnerState);
 
-    console.log(playlistOwner);
-
     useEffect(() => {
         setColor(shuffle(colors).shift());
     }, [playlistId]);
 
     useEffect(() => {
-        spotifyApi
-            .getPlaylist(playlistId)
-            .then((data) => {
-                setPlaylist(data?.body);
-                setPlaylistOwnerId(data?.body?.owner.id);
-            })
-            .catch((err) => {
-                console.error(err.message);
-            });
+        if (playlistId) {
+            spotifyApi
+                .getPlaylist(playlistId)
+                .then((data) => {
+                    setPlaylist(data?.body);
+                    setPlaylistOwnerId(data?.body?.owner.id);
+                })
+                .catch((err) => {
+                    console.error(err.message);
+                });
+        }
     }, [spotifyApi, playlistId]);
 
     useEffect(() => {
@@ -57,8 +57,6 @@ const PlaylistDetails = () => {
                 console.error(err.message);
             });
     }, [spotifyApi, playlistOwnerId]);
-
-    console.log(playlist);
 
     return (
         <div

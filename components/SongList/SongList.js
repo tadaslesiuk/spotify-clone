@@ -12,9 +12,18 @@ const SongList = () => {
             <PlaylistActionBar />
             <SongListHeader />
             <div className="flex flex-col px-8 py-4 text-white">
-                {playlist?.tracks?.items?.map((track, index) => (
-                    <Song key={track.track.id} order={index} track={track} />
-                ))}
+                {playlist?.tracks?.items &&
+                    playlist?.tracks?.items?.map(
+                        (track, index) =>
+                            track?.track?.id && (
+                                <Song
+                                    key={track?.track?.id}
+                                    order={index}
+                                    track={track}
+                                    playlistId={playlist?.id}
+                                />
+                            )
+                    )}
             </div>
         </>
     );
