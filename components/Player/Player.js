@@ -96,8 +96,10 @@ const Player = () => {
                     alt=""
                 />
                 <div>
-                    <p className="text-sm text-white">{trackInfo?.name}</p>
-                    <p className="text-[11px] text-white text-opacity-60">
+                    <p className="text-sm text-white hover:underline hover:decoration-solid cursor-pointer">
+                        {trackInfo?.name}
+                    </p>
+                    <p className="text-[11px] text-white text-opacity-60 hover:underline hover:decoration-solid cursor-pointer">
                         {trackInfo?.artists?.[0]?.name}
                     </p>
                 </div>

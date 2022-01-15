@@ -83,7 +83,7 @@ const PlaylistActionBar = () => {
                 <DotsHorizontalIcon className="w-6 h-6 text-white text-opacity-60 hover:text-white" />
             </div>
             <div className="pr-4">
-                <SearchIcon className="w-8 h-8 text-white text-opacity-60 hover:bg-white/10 rounded-full p-2" />
+                <SearchIcon className="w-8 h-8 text-white hover:bg-white/20 rounded-full p-2" />
             </div>
         </div>
     );

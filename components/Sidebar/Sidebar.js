@@ -33,29 +33,29 @@ const Sidebar = () => {
     }, [playlists, playlistId]);
 
     return (
-        <div className="text-[#B3B3B3] p-5 text-sm border-r border-gray-900 overflow-y-scroll no-scrollbar h-screen hidden sm:max-w-[12rem] md:inline-flex lg:max-w-[15rem]">
+        <div className="text-[#B3B3B3] p-5 text-sm border-r border-gray-900 overflow-y-scroll no-scrollbar h-screen hidden sm:max-w-[12rem] md:inline-flex lg:max-w-[15rem] cursor-default">
             <div className="space-y-3">
-                <button className="hover:text-white">
+                <button className="hover:text-white cursor-default">
                     <DotsHorizontalIcon className="h-6 w-6" />
                 </button>
-                <button className="flex items-center space-x-2 hover:text-white">
+                <button className="flex items-center space-x-2 hover:text-white cursor-default">
                     <HomeIcon className="h-6 w-6" />
                     <p>Home</p>
                 </button>
-                <button className="flex items-center space-x-2 hover:text-white">
+                <button className="flex items-center space-x-2 hover:text-white cursor-default">
                     <SearchIcon className="h-6 w-6" />
                     <p>Search</p>
                 </button>
-                <button className="flex items-center space-x-2 hover:text-white">
+                <button className="flex items-center space-x-2 hover:text-white cursor-default">
                     <MenuAlt2Icon className="h-6 w-6 -rotate-90" />
                     <p>Your Library</p>
                 </button>
                 <hr className="border-none" />
-                <button className="flex items-center space-x-2 hover:text-white">
+                <button className="flex items-center space-x-2 hover:text-white cursor-default">
                     <PlusCircleIcon className="6 w-6" />
                     <p>Create Playlist</p>
                 </button>
-                <button className="flex items-center space-x-2 hover:text-white">
+                <button className="flex items-center space-x-2 hover:text-white cursor-default">
                     <HeartIcon className="h-6 w-6" />
                     <p>Liked Songs</p>
                 </button>
@@ -65,7 +65,7 @@ const Sidebar = () => {
                         playlists.map((p) => (
                             <p
                                 key={p.id}
-                                className={`cursor-pointer hover:text-white ${
+                                className={`hover:text-white ${
                                     p.id === selectedPlaylist?.id &&
                                     'text-white font-bold'
                                 }`}

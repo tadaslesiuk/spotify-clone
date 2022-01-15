@@ -12,8 +12,8 @@ const Header = () => {
         <>
             <header className="fixed flex justify-between py-3 px-7 left-0 right-0 sm:left-0 md:left-[12rem] lg:left-[15rem]">
                 <div className="flex space-x-2">
-                    <ArrowCircleLeftIcon className="w-10 h-10 opacity-80 cursor-pointer" />
-                    <ArrowCircleRightIcon className="w-10 h-10 opacity-40 cursor-pointer" />
+                    <ArrowCircleLeftIcon className="w-10 h-10 opacity-80 cursor-not-allowed" />
+                    <ArrowCircleRightIcon className="w-10 h-10 opacity-40 cursor-not-allowed" />
                 </div>
                 <div
                     className="flex items-center w-max h-max rounded-full bg-black/60 text-white space-x-2 p-0.5 pr-2 hover:bg-black/60 cursor-pointer"

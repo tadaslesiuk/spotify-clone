@@ -7,7 +7,12 @@ import {
 } from '../../store/trackAtom';
 import useSpotify from '../../hooks/useSpotify';
 import { msToMinAndSec } from '../../lib/msToMinAndSec';
-import { PlayIcon, PauseIcon } from '@heroicons/react/solid';
+import { HeartIcon } from '@heroicons/react/outline';
+import {
+    PlayIcon,
+    PauseIcon,
+    DotsHorizontalIcon,
+} from '@heroicons/react/solid';
 
 const Song = ({ order, track, playlistId }) => {
     const spotifyApi = useSpotify();
@@ -90,7 +95,19 @@ const Song = ({ order, track, playlistId }) => {
                 >
                     {track?.track?.album?.name}
                 </p>
-                <p>{msToMinAndSec(track?.track?.duration_ms)}</p>
+                <div className="grid grid-cols-3 items-center space-x-2">
+                    <div className="flex justify-center">
+                        {hovered && (
+                            <HeartIcon className="w-4 h-4 hover:text-white" />
+                        )}
+                    </div>
+                    <p>{msToMinAndSec(track?.track?.duration_ms)}</p>
+                    <div className="flex justify-end">
+                        {hovered && (
+                            <DotsHorizontalIcon className="w-5 h-5 text-white" />
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
     );

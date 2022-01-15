@@ -60,10 +60,10 @@ const PlaylistDetails = () => {
 
     return (
         <div
-            className={`flex items-end h-80 space-x-7 text-white p-8 bg-gradient-to-b ${color} to-black`}
+            className={`flex items-end h-80 space-x-7 text-white p-8 bg-gradient-to-b ${color} to-black cursor-default`}
         >
             <img
-                className="w-40 h-40 xl:w-56 xl:h-56 shadow-2xl hover:opacity-80"
+                className="w-40 h-40 xl:w-56 xl:h-56 shadow-2xl"
                 src={playlist?.images?.[0]?.url}
                 alt=""
             />
@@ -74,11 +74,11 @@ const PlaylistDetails = () => {
                         playlist?.name.length < 15
                             ? 'xl:text-8xl'
                             : 'text-xl lg:text-4xl'
-                    } font-bold mt-2 mb-6 cursor-pointer`}
+                    } font-bold mt-2 mb-6`}
                 >
                     {playlist?.name}
                 </h1>
-                <p className="hidden md:inline-flex text-sm text-white text-opacity-60 mb-2 cursor-pointer">
+                <p className="hidden md:inline-flex text-sm text-white text-opacity-60 mb-2">
                     {playlist?.description}
                 </p>
                 <div className="flex items-center w-max rounded-full text-white text-opacity-60 text-sm space-x-2">
