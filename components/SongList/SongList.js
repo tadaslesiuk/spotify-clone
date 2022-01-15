@@ -1,6 +1,5 @@
 import { useRecoilValue } from 'recoil';
 import { playlistState } from '../../store/playlistAtom';
-import PlaylistActionBar from '../PlaylistActionBar/PlaylistActionBar.js';
 import SongListHeader from '../SongListHeader/SongListHeader.js';
 import Song from '../Song/Song';
 
@@ -9,7 +8,6 @@ const SongList = () => {
 
     return (
         <>
-            <PlaylistActionBar />
             <SongListHeader />
             <div className="flex flex-col px-8 py-4 text-white">
                 {playlist?.tracks?.items &&
