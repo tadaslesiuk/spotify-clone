@@ -17,7 +17,6 @@ const UserMenu = () => {
             <div
                 className="flex items-center w-max h-max rounded-full bg-black/60 text-white space-x-2 p-0.5 pr-2 hover:bg-black/60 cursor-pointer"
                 onClick={toggleOpen}
-                on
             >
                 <img
                     className="rounded-full w-7 h-7"
