@@ -33,7 +33,7 @@ const Sidebar = () => {
     }, [playlists, playlistId]);
 
     return (
-        <div className="text-[#B3B3B3] p-5 text-sm border-r border-gray-900 overflow-y-scroll no-scrollbar h-screen hidden sm:max-w-[12rem] md:inline-flex lg:max-w-[15rem] cursor-default">
+        <div className="text-[#B3B3B3] p-5 text-sm border-r border-gray-900 overflow-y-scroll no-scrollbar hidden sm:max-w-[12rem] md:inline-flex lg:max-w-[15rem] cursor-default">
             <div className="space-y-3">
                 <button className="hover:text-white cursor-not-allowed">
                     <DotsHorizontalIcon className="h-6 w-6" />

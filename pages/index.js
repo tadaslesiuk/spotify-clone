@@ -5,6 +5,8 @@ import Header from '../components/Header/Header';
 import Main from '../components/Main/Main';
 import Player from '../components/Player/Player';
 
+import styles from '../styles/main.module.css';
+
 const Home = () => {
     return (
         <div className="bg-black h-screen overflow-hidden">
@@ -12,9 +14,9 @@ const Home = () => {
                 <title>Spotify Clone</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className="flex">
+            <main className={`flex ${styles['main-container']}`}>
                 <Sidebar />
-                <div className="grow h-screen overflow-y-scroll">
+                <div className="grow overflow-y-scroll">
                     <Header />
                     <Main />
                 </div>
