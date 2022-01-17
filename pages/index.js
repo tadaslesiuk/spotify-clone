@@ -5,7 +5,7 @@ import Header from '../components/Header/Header';
 import Main from '../components/Main/Main';
 import Player from '../components/Player/Player';
 
-import styles from '../styles/main.module.css';
+import styles from '../styles/index.module.scss';
 
 const Home = () => {
     return (
@@ -14,9 +14,9 @@ const Home = () => {
                 <title>Spotify Clone</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <main className={`flex ${styles['main-container']}`}>
+            <main className={`flex ${styles['container']}`}>
                 <Sidebar />
-                <div className="grow overflow-y-scroll">
+                <div className={`grow ${styles['main-container']}`}>
                     <Header />
                     <Main />
                 </div>

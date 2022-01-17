@@ -13,6 +13,7 @@
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "recoil": "^0.5.2",
+        "sass": "^1.48.0",
         "spotify-web-api-node": "^5.0.2"
     },
     "devDependencies": {
