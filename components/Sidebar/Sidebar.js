@@ -75,13 +75,15 @@ const Sidebar = () => {
             >
                 {playlists &&
                     playlists.map((p) => (
-                        <div className="flex items-center justify-between">
+                        <div
+                            className={`flex items-center justify-between ${styles['playlist']}`}
+                        >
                             <p
                                 key={p.id}
                                 className={`hover:text-white ${
                                     p.id === selectedPlaylist?.id &&
                                     'text-white font-bold'
-                                }`}
+                                } truncate`}
                                 onClick={() => setPlaylistId(p.id)}
                             >
                                 {p.name}

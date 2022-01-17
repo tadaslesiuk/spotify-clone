@@ -2,3 +2,11 @@
     height: calc(100vh - 360px);
     overflow-y: overlay;
 }
+
+.playlist {
+    width: calc(14rem - 2.5rem);
+
+    > p {
+        width: calc(14rem - 2.5rem - 1.25rem);
+    }
+}
