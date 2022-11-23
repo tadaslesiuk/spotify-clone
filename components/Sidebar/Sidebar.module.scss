@@ -1,5 +1,6 @@
 .playlists-container {
     height: calc(100vh - 360px);
+    overflow-x: hidden;
     overflow-y: overlay;
 }
 
