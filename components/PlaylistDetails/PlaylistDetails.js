@@ -84,7 +84,7 @@ const PlaylistDetails = () => {
                 <div className="flex items-center w-max rounded-full text-white text-opacity-60 text-sm space-x-2">
                     <img
                         className="rounded-full w-6 h-6"
-                        src={playlistOwner?.images[0].url}
+                        src={playlistOwner?.images[0]?.url}
                         alt=""
                     />
                     <span className="text-white font-bold hover:underline cursor-not-allowed">
